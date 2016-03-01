@@ -79,7 +79,6 @@ function render(state, emit) {
     }
 
     return h('div', components);
-    
 }
 
 ProgramComponent.render = render;
