@@ -12,10 +12,10 @@ var ProgramComponent = require('Slak-ProgramComponent');
 # Construct
 
 ``` js
-var view          = require('./view');
-var ListView      = require('Slak-ListView').ListView;
-
 var ProgramComponent = require('Slak-ProgramComponent');
+var ListView         = require('Slak-ListView').ListView;
+var view             = require('./view');
+
 var programState = ListView([], view.elementToTree, 'Schedule', 'Add an activity (e.g. bell, wood block) from the activity palette, then click start.');
 var activityState = ListView([], view.elementToTree, '', '', true);
 
