@@ -61,20 +61,19 @@ function render(state, emit) {
         emit('dirty');
     }}, 'Edit');
 
-    var programHeader = h('h3', 'Schedule');
-    var elementsHeader = h('h3', 'Activity Palette');
     var components = [edit];
 
     if (state.editMode) {
-        components.push(newButton);
         components.push(save);
+        components.push(newButton);        
+        state.programView.remove = true;
+    } else {
+        state.programView.remove = false;
     }
 
-    components.push(programHeader);
     components.push(ListView.render(state.programView, emit));
 
     if (state.editMode) {
-        components.push(elementsHeader);
         components.push(ListView.render(state.elementsView, emit));
     }
 
