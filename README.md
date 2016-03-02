@@ -6,14 +6,14 @@ Create a program from a set of elements.  A unidirectional virtual-dom component
 ``` js
 //Import the module.
 //
-var ProgramComponent = require('Slak-ProgramComponent');
+var ProgramComponent = require('slak-programcomponent');
 ```
 
 # Construct
 
 ``` js
-var ProgramComponent = require('Slak-ProgramComponent');
-var ListView         = require('Slak-ListView').ListView;
+var ProgramComponent = require('slak-programcomponent');
+var ListView         = require('slak-listview').ListView;
 var view             = require('./view');
 
 var programState = ListView([], view.elementToTree, 'Schedule', 'Add an activity (e.g. bell, wood block) from the activity palette, then click start.');
@@ -34,5 +34,3 @@ var emit     = eventBus.emit.bind(eventBus);
 var programComponent = ProgramComponent.render(state.programComponent, emit);
 
 ```
-
-
