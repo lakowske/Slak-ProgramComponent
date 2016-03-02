@@ -1,5 +1,5 @@
 {
-  "name": "Slak-ProgramComponent",
+  "name": "slak-programcomponent",
   "version": "1.0.0",
   "description": "A program view made up of two lists: elements and programs.  Add elements to the program. A Slak component using virtual-dom",
   "main": "index.js",
