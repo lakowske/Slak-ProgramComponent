@@ -3,7 +3,7 @@
  */
 
 var h = require('virtual-dom/h');
-var ListView = require('Slak-ListView');
+var ListView = require('slak-listview');
 
 function clone(object) {
     return JSON.parse(JSON.stringify(object));
