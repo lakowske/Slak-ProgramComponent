@@ -1,4 +1,4 @@
-# Slak-ProgramComponent
+# slak-programcomponent
 Create a program from a set of elements.  A unidirectional virtual-dom component.
 
 # Import
