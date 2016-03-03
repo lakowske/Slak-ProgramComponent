@@ -2,6 +2,7 @@
  * (C) 2016 Seth Lakowske
  */
 
+var EventEmitter = require('events');
 var h = require('virtual-dom/h');
 var ListView = require('slak-listview');
 
@@ -16,36 +17,34 @@ function clone(object) {
  * @param programView where elements will be added
  * @param elementsView where elements can be viewed
  */
-function ProgramComponent(programView, elementsView, emit) {
+function ProgramComponent(programView, elementsView) {
     elementsView.events.on('add', function(state, item) {
         var progItem = clone(item);
         progItem.editMode = false;
         programView.items.push(progItem);
-        emit('dirty');
     })
 
     programView.events.on('remove', function(state, item) {
         ListView.remove(programView, item);
-        emit('dirty');
     })
 
     elementsView.events.on('remove', function(state, item) {
         ListView.remove(elementsView, item);
-        emit('dirty');    
     })
     
     return {
         editMode: false,
         programView: programView,
         elementsView: elementsView,
+        events : new EventEmitter()
     }
     
 }
 
-function render(state, emit) {
+function render(state) {
     function emitEvent(name) {
         return function(ev) {
-            emit(name, state, ev)
+            state.events.emit(name, state, ev)
         }
     }
 
@@ -58,7 +57,6 @@ function render(state, emit) {
     
     var edit   = h('a', {href:'#', style: 'float: right', onclick : function() {
         state.editMode = !state.editMode;
-        emit('dirty');
     }}, 'Edit');
 
     var components = [edit];
@@ -71,10 +69,10 @@ function render(state, emit) {
         state.programView.remove = false;
     }
 
-    components.push(ListView.render(state.programView, emit));
+    components.push(ListView.render(state.programView));
 
     if (state.editMode) {
-        components.push(ListView.render(state.elementsView, emit));
+        components.push(ListView.render(state.elementsView));
     }
 
     return h('div', components);

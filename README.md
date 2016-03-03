@@ -20,7 +20,7 @@ var programState = ListView([], view.elementToTree, 'Schedule', 'Add an activity
 var activityState = ListView([], view.elementToTree, '', '', true);
 
 // A program component is made up of two ListViews
-var programComponent = ProgramComponent(programState, activityState, emit);
+var programComponent = ProgramComponent(programState, activityState);
 ```
 
 # Render
@@ -30,7 +30,6 @@ var programComponent = ProgramComponent(programState, activityState, emit);
 var eventBus = new EventEmitter();
 var emit     = eventBus.emit.bind(eventBus);
 
-// Render a programComponent to a hyperscript tree with the given state and event emitter
-var programComponent = ProgramComponent.render(state.programComponent, emit);
-
+// Render a programComponent to a hyperscript tree with the given state.
+var programComponent = ProgramComponent.render(state.programComponent);
 ```
