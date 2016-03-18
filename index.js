@@ -51,7 +51,7 @@ function render(state) {
     var newButton = h('input', {type : 'button', value : 'New', onclick : emitEvent('newProgram')})
     var save  = ('div', [
         'Name: ',
-        h('input.duration', {type : 'text', id : 'programName', value : state.programView.name, onchange : emitEvent('programName')}),
+        h('input', {id : 'programName', onkeyup : emitEvent('programName')}),
         h('input', {type : 'button', value : 'Save', onclick : emitEvent('save')})
     ])
     
